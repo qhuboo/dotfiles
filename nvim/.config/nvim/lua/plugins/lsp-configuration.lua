@@ -10,7 +10,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "ts_ls", "pyright", "ruff" },
+        ensure_installed = { "lua_ls", "ts_ls", "pyright", "ruff", "tailwindcss" },
       })
     end,
   },
@@ -126,6 +126,13 @@ return {
             })
           end
         end,
+      })
+
+      -- Tailwindcss
+      lspconfig.tailwindcss.setup({
+        capabilities = capabilities,
+        filetypes = { "html", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact", "svelte", "vue", "astro" },
+        root_dir = lspconfig.util.root_pattern("package.json", ".git"),
       })
     end,
   },
