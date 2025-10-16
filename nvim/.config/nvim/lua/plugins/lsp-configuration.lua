@@ -54,7 +54,9 @@ return {
           },
           python = {
             analysis = {
-              ignore = { "*" }, -- Ruff is handling linting
+              typeCheckingMode = "basic",
+              autoSearchPaths = true,
+              useLibraryCodeForTypes = true
             },
           },
         },
@@ -78,6 +80,7 @@ return {
           vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, opts)
           vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
           vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
+          vim.keymap.set("n", "<leader>gl", vim.diagnostic.open_float, opts)
         end,
       })
 
