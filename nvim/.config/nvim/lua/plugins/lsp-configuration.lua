@@ -68,7 +68,6 @@ return {
 		lazy = false,
 		dependencies = { "williamboman/mason.nvim" },
 		config = function()
-			print("DEBUG: nvim-lspconfig is loading!")
 			-- Requiring lspconfig here causes it to register all of its
 			-- built-in server definitions into Neovim's LSP system.
 			-- Without this line, vim.lsp.enable("lua_ls") wouldn't know
