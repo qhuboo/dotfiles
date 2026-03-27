@@ -68,6 +68,7 @@ return {
 		lazy = false,
 		dependencies = { "williamboman/mason.nvim" },
 		config = function()
+			print("DEBUG: nvim-lspconfig is loading!")
 			-- Requiring lspconfig here causes it to register all of its
 			-- built-in server definitions into Neovim's LSP system.
 			-- Without this line, vim.lsp.enable("lua_ls") wouldn't know
@@ -146,7 +147,7 @@ return {
 			-- Neovim the exact shell command used to launch the server process.
 			-- lspconfig already knows this default, but it's kept here
 			-- explicitly for clarity.
-			vim.lsp.config("ts_ls", {
+			vim.lsp.config("tsserver", {
 				cmd = { "typescript-language-server", "--stdio" },
 				filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
 				root_dir = function(bufnr)
@@ -224,7 +225,7 @@ return {
 			-- ============================================================
 			vim.lsp.enable({
 				"lua_ls",
-				"ts_ls",
+				"tsserver",
 				"pyright",
 				"ruff",
 				"tailwindcss",
