@@ -4,8 +4,7 @@ return {
 	-- MASON.NVIM
 	-- Mason is a package manager that runs inside Neovim.
 	-- It downloads and installs language servers, formatters, and
-	-- linters (e.g. typescript-language-server, lua-language-server)
-	-- and puts them somewhere Neovim can find them.
+	-- linters (e.g. typescript-language-server, lua-language-server) and puts them somewhere Neovim can find them.
 	-- It has no knowledge of LSP config itself — it just installs
 	-- the executables. Think of it like brew/apt but for editor tooling.
 	-- ============================================================
@@ -67,6 +66,7 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		lazy = false,
+		dependencies = { "williamboman/mason.nvim" },
 		config = function()
 			-- Requiring lspconfig here causes it to register all of its
 			-- built-in server definitions into Neovim's LSP system.
@@ -148,6 +148,7 @@ return {
 			-- explicitly for clarity.
 			vim.lsp.config("ts_ls", {
 				cmd = { "typescript-language-server", "--stdio" },
+				filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
 				root_dir = function(bufnr)
 					return vim.fs.root(bufnr, { "package.json", "tsconfig.json", ".git" })
 				end,
